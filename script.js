@@ -1,3 +1,37 @@
+//variables
+let opCurrentValue = [];
+let opHistoryValue = [];
+
+//qeuery selectors
+const buttonArea = document.querySelector("#button-area");
+console.log(buttonArea);
+const opCurrent = document.querySelector("#op-current");
+console.log(opCurrent);
+const opHistory = document.querySelector("#op-history");
+console.log(opHistory);
+
+//event listeners
+buttonArea.addEventListener('click', (event) => clickButton(event));
+
+//click button function
+function clickButton(event){
+    let target = event.target;
+    if (event.target.classList.contains("number")){
+        opCurrentValue.push(target.textContent);
+    }
+    if (event.target.classList.contains("operator")){
+
+    }
+    console.lo
+    updateOpCurrent();
+}
+
+
+//display area functions
+function updateOpCurrent(){
+    opCurrent.textContent = opCurrentValue.join('');
+}
+
 
 //operation functions
 
