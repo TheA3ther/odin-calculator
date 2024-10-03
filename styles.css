@@ -5,10 +5,12 @@ html, body  {
 
 body {
     display: flex;
-    background-color: lightgray;
+    flex-direction: column;
+    background-color: white;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    font-family: 'Inter', sans-serif;
 }
 
 #calculator{
@@ -16,11 +18,11 @@ body {
     flex-direction: column;
     justify-content: center;
     flex: auto;
-    background-color: lightslategrey;
+    background-color: lightslategray;
     box-sizing: border-box;
-    margin: 0;
-    border: solid black 1px;
-    border-radius: 20px;
+    margin: auto;
+    border: solid black 2px;
+    border-radius: 30px;
     height: 90vh;
     max-height: 90vh;
     min-height: 370px;
@@ -37,7 +39,9 @@ body {
     flex: 1 1 0;
     min-width: 200px;
     min-height: 100px;
-    background-color: red;
+    border-radius: 20px;
+    border: solid 1px black;
+    background-color: rgb(211, 211, 211);
 }
 
 #button-area {
@@ -56,8 +60,9 @@ body {
 
 button {
     flex: 1 1 0;
+    font-family: 'Inter', sans-serif;
     font-size: 3.5vh;
-    background-color: gainsboro;
+    background-color: rgb(188, 198, 209);
     transition: transform 0.3s ease;
     margin: 0.2vh 0.1vw;
     border-radius: 10px;
@@ -69,6 +74,11 @@ button:hover {
 }
 
 button:active {
+    filter: brightness(0.70);
     transform: translateY(0.1vh); 
-    filter: brightness(0.85);
+}
+
+#footer {
+    margin: auto;
+    font-size: 3vh;
 }
