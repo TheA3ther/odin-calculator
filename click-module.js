@@ -16,8 +16,8 @@ export function clickButton(event){
     let target = event.target;
     let canUpdateOpHistory = false;
     if (target.classList.contains("number")) clickNumber(target);
-    if (target.id == "decimal") clickDecimal(target);
-    if (target.id == "sign") clickSign(target);
+    if (target.id == "decimal") clickDecimal();
+    if (target.id == "sign") clickSign();
     if (target.id == "backspace") clickBackspace();
     if (target.id == "clear-entry") clickClearEntry();
     if (target.id == "clear") clickClear();
@@ -69,15 +69,17 @@ function clickEquals(target){
     operator = undefined;
 }
 
-function clickDecimal(target){
+function clickDecimal(){
     if (!hasDecimal){
-        if (opCurrentArray.length < MAXLENGTH) opCurrentArray.push('.');
-        hasDecimal = true;
+        if (opCurrentArray.length < MAXLENGTH && !isReplaceable){
+            opCurrentArray.push('.');
+            hasDecimal = true;
+        } 
     }
 }
 
-function clickSign(target){
-    isNegative = !isNegative;
+function clickSign(){
+    if (!isReplaceable) isNegative = !isNegative;
     console.log(isNegative);
 }
 
