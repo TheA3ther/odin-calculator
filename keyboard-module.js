@@ -4,9 +4,6 @@ export function SimulateClick(event){
 
     let buttonId;
 
-    console.log("button clicked! i smell something...");
-    console.log(event.key);
-
     if (numbers.includes(event.key) || operators.includes(event.key)) buttonId = event.key;
     if (event.key == "Backspace") buttonId = "backspace";
     if (event.key == "Enter") buttonId = "equals";

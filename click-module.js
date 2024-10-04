@@ -13,7 +13,6 @@ let hasDecimal = false;
 
 //click button function
 export function clickButton(event){
-    console.log(event);
     let target = event.target;
     let canUpdateOpHistory = false;
     if (target.classList.contains("number")) clickNumber(target);
@@ -45,8 +44,6 @@ function clickNumber(target){
         isReplaceable = false;
         if (operator === undefined) calculatedFloat = undefined;
     }
-    console.log("after number clicked");
-    console.log(opCurrentArray);
 }
 
 function clickOperator(target){
@@ -59,10 +56,6 @@ function clickOperator(target){
     resetToggles();
     isReplaceable = true;
     operator = target.textContent;
-    console.log("after operator clicked");
-    console.log(calculatedFloat);
-    console.log(operator);
-    console.log(isReplaceable);
 }
 
 function clickEquals(target){
@@ -81,12 +74,10 @@ function clickDecimal(){
 
 function clickSign(){
     if (!isReplaceable) isNegative = !isNegative;
-    console.log(isNegative);
 }
 
 function clickBackspace(){
     if (!isReplaceable){
-        console.log(operator);
         if (opCurrentArray.length > 1){
             opCurrentArray.pop();
         }
@@ -95,7 +86,6 @@ function clickBackspace(){
         }
         else if (operator !== undefined){
             operator = undefined;
-            console.log("operator now undefined");
         }
     }
 }
