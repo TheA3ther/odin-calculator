@@ -39,6 +39,7 @@ function clickNumber(target){
     else {
         opCurrentArray = [target.textContent];
         isReplaceable = false;
+        if (operator === undefined) calculatedFloat = undefined;
     }
     console.log("after number clicked");
     console.log(opCurrentArray);
