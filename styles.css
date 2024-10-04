@@ -96,6 +96,11 @@ button:active {
     transform: translateY(0.1vh); 
 }
 
+.pressed {
+    filter: brightness(0.70);
+    transform: translateY(0.1vh); 
+}
+
 #footer {
     margin: auto;
     font-size: 3vh;

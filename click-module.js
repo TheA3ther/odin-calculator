@@ -13,6 +13,7 @@ let hasDecimal = false;
 
 //click button function
 export function clickButton(event){
+    console.log(event);
     let target = event.target;
     let canUpdateOpHistory = false;
     if (target.classList.contains("number")) clickNumber(target);
