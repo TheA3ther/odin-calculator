@@ -80,8 +80,14 @@ function clickSign(target){
 }
 
 function clickBackspace(){
-    if (!isReplaceable && opCurrentArray.length > 0){
-        opCurrentArray.pop();
+    if (!isReplaceable){
+        if (opCurrentArray.length > 1){
+            opCurrentArray.pop();
+        }
+        else if (opCurrentArray.length == 1){
+            opCurrentArray = [0];
+            isReplaceable = true;
+        }
     }
 }
 
