@@ -20,6 +20,7 @@ export function clickButton(event){
     if (target.id == "sign") clickSign(target);
     if (target.id == "backspace") clickBackspace();
     if (target.id == "clear-entry") clickClearEntry();
+    if (target.id == "clear") clickClear();
     if (target.classList.contains("operator")) {
         clickOperator(target);
         canUpdateOpHistory = true;
@@ -93,9 +94,15 @@ function clickBackspace(){
 
 function clickClearEntry(){
     resetOpCurrentArray();
+    resetToggles();
 }
 
-
+function clickClear(){
+    resetOpCurrentArray();
+    calculatedFloat = undefined;
+    operator = undefined;
+    resetToggles();
+}
 
 //helper functions
 function opCurrentArrayToFloat(){
