@@ -19,6 +19,7 @@ export function clickButton(event){
     if (target.id == "decimal") clickDecimal(target);
     if (target.id == "sign") clickSign(target);
     if (target.id == "backspace") clickBackspace();
+    if (target.id == "clear-entry") clickClearEntry();
     if (target.classList.contains("operator")) {
         clickOperator(target);
         canUpdateOpHistory = true;
@@ -85,11 +86,16 @@ function clickBackspace(){
             opCurrentArray.pop();
         }
         else if (opCurrentArray.length == 1){
-            opCurrentArray = [0];
-            isReplaceable = true;
+            resetOpCurrentArray();
         }
     }
 }
+
+function clickClearEntry(){
+    resetOpCurrentArray();
+}
+
+
 
 //helper functions
 function opCurrentArrayToFloat(){
@@ -111,4 +117,9 @@ function PerformCalculation(){
 function resetToggles(){
     isNegative = false;
     hasDecimal = false;
+}
+
+function resetOpCurrentArray(){
+    opCurrentArray = [0];
+    isReplaceable = true;
 }
