@@ -1,5 +1,6 @@
 //imports
 import * as CalcModule from './calculation-module.js';
+import * as DisplayModule from './display-module.js';
 
 //variables
 const MAXLENGTH = 20;
@@ -18,6 +19,7 @@ export function clickButton(event){
     if (target.id == "equals") clickEquals(target);
     if (target.id == "decimal") clickDecimal(target);
     if (target.id == "sign") clickSign(target);
+    DisplayModule.UpdateDisplays();
 }
 
 //specific button functions
