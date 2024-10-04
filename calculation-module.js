@@ -12,6 +12,10 @@ export function operate(a, b, operator){
     }
 }
 
+export function changeSign(a){
+    return a * -1;
+}
+
 //operation functions
 function add(a, b){
     return a + b;
