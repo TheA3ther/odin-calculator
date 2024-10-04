@@ -9,6 +9,7 @@ let operator = undefined;
 let opCurrentArray = [];
 let isReplaceable = false;
 let isNegative = false;
+let hasDecimal = false;
 
 //click button function
 export function clickButton(event){
@@ -45,12 +46,12 @@ function clickNumber(target){
 
 function clickOperator(target){
     if (calculatedFloat === undefined){
-        calculatedFloat = opCurrentArrayToFloat();
-        
+        calculatedFloat = opCurrentArrayToFloat();  
     }
     else {
         PerformCalculation();
     }
+    resetToggles();
     isReplaceable = true;
     operator = target.textContent;
     console.log("after operator clicked");
@@ -61,16 +62,19 @@ function clickOperator(target){
 
 function clickEquals(target){
     PerformCalculation();
-    isReplaceable = true;
     operator = undefined;
 }
 
 function clickDecimal(target){
-
+    if (!hasDecimal){
+        if (opCurrentArray.length < MAXLENGTH) opCurrentArray.push('.');
+        hasDecimal = true;
+    }
 }
 
 function clickSign(target){
-
+    isNegative = !isNegative;
+    console.log(isNegative);
 }
 
 //helper functions
@@ -80,7 +84,17 @@ function opCurrentArrayToFloat(){
 
 function PerformCalculation(){
     if (operator !== undefined && opCurrentArray.length > 0 && !isReplaceable){
-        calculatedFloat = CalcModule.operate(calculatedFloat, opCurrentArrayToFloat(), operator);
+        let result = CalcModule.operate(calculatedFloat, opCurrentArrayToFloat(), operator);
+        //this next line should not be here but im too lazy
+        calculatedFloat = (result === undefined || result === NaN || result === Infinity || result === -Infinity) ? 0 : result;
         opCurrentArray = [...String(calculatedFloat)];
+        isReplaceable = true;
+        hasDecimal = false;
+        isNegative = false;
     }
+}
+
+function resetToggles(){
+    isNegative = false;
+    hasDecimal = false;
 }
