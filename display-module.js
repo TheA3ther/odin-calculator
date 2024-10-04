@@ -8,3 +8,7 @@ export function UpdateDisplays(opCurrentArray, isNegative, operator, canUpdateOp
     opCurrent.textContent = opCurrentString;
     if (canUpdateOpHistory) opHistory.textContent = opHistoryString;
 }
+
+export function ClearOpHistoryString(){
+    opHistory.textContent = '';
+}

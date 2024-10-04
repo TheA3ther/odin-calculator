@@ -99,9 +99,10 @@ function clickClearEntry(){
 
 function clickClear(){
     resetOpCurrentArray();
+    resetToggles();
+    DisplayModule.ClearOpHistoryString();
     calculatedFloat = undefined;
     operator = undefined;
-    resetToggles();
 }
 
 //helper functions
