@@ -18,6 +18,7 @@ export function clickButton(event){
     if (target.classList.contains("number")) clickNumber(target);
     if (target.id == "decimal") clickDecimal(target);
     if (target.id == "sign") clickSign(target);
+    if (target.id == "backspace") clickBackspace();
     if (target.classList.contains("operator")) {
         clickOperator(target);
         canUpdateOpHistory = true;
@@ -76,6 +77,12 @@ function clickDecimal(target){
 function clickSign(target){
     isNegative = !isNegative;
     console.log(isNegative);
+}
+
+function clickBackspace(){
+    if (!isReplaceable && opCurrentArray.length > 0){
+        opCurrentArray.pop();
+    }
 }
 
 //helper functions
