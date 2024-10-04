@@ -5,7 +5,6 @@ import * as DisplayModule from './display-module.js';
 //variables
 const MAXLENGTH = 20;
 let calculatedFloat = undefined;
-let opCurrentAsFloat = undefined;
 let operator = undefined;
 let opCurrentArray = [];
 let isReplaceable = false;
@@ -16,10 +15,16 @@ export function clickButton(event){
     let target = event.target;
     let canUpdateOpHistory = false;
     if (target.classList.contains("number")) clickNumber(target);
-    if (target.classList.contains("operator")) clickOperator(target);
-    if (target.id == "equals") clickEquals(target);
     if (target.id == "decimal") clickDecimal(target);
     if (target.id == "sign") clickSign(target);
+    if (target.classList.contains("operator")) {
+        clickOperator(target);
+        canUpdateOpHistory = true;
+    }
+    if (target.id == "equals") {
+        clickEquals(target);
+        canUpdateOpHistory = true;
+    }
     DisplayModule.UpdateDisplays(opCurrentArray, isNegative, operator, canUpdateOpHistory);
 }
 
@@ -34,15 +39,28 @@ function clickNumber(target){
         opCurrentArray = [target.textContent];
         isReplaceable = false;
     }
+    console.log("after number clicked");
     console.log(opCurrentArray);
 }
 
 function clickOperator(target){
-
+    if (calculatedFloat === undefined){
+        calculatedFloat = opCurrentArrayToFloat();
+        
+    }
+    else {
+        PerformCalculation();
+    }
+    isReplaceable = true;
+    operator = target.textContent;
+    console.log("after operator clicked");
+    console.log(calculatedFloat);
+    console.log(operator);
+    console.log(isReplaceable);
 }
 
 function clickEquals(target){
-
+    
 }
 
 function clickDecimal(target){
@@ -56,4 +74,11 @@ function clickSign(target){
 //helper functions
 function opCurrentArrayToFloat(){
     return parseFloat(opCurrentArray.join('')) * (isNegative ? -1 : 1);
+}
+
+function PerformCalculation(){
+    if (operator !== undefined && opCurrentArray.length > 0 && !isReplaceable){
+        calculatedFloat = CalcModule.operate(calculatedFloat, opCurrentArrayToFloat(), operator);
+        opCurrentArray = [...String(calculatedFloat)];
+    }
 }
