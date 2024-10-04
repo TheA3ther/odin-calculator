@@ -2,6 +2,7 @@
 import * as CalcModule from './calculation-module';
 
 //variables
+const MAXLENGTH = 20;
 let operandOne = undefined;
 let operandTwo = undefined;
 let opCurrentArray = [];
@@ -21,7 +22,15 @@ function clickButton(event){
 
 //specific button functions
 function clickNumber(target){
-
+    if (!isReplaceable){
+        if (opCurrentArray.length <= MAXLENGTH){
+            opCurrentArray.push(target.textContent);
+        }
+    }
+    else {
+        opCurrentArray = [target.textContent];
+        isReplaceable = false;
+    }
 }
 
 function clickOperator(target){
