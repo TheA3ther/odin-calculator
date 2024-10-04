@@ -1,5 +1,5 @@
 //imports
-import * as ClickModule from './click-module';
+import * as ClickModule from './click-module.js';
 
 //variables
 

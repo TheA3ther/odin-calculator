@@ -1,5 +1,5 @@
 //imports
-import * as CalcModule from './calculation-module';
+import * as CalcModule from './calculation-module.js';
 
 //variables
 const MAXLENGTH = 20;
@@ -11,7 +11,7 @@ let isReplaceable = false;
 let isNegative = false;
 
 //click button function
-function clickButton(event){
+export function clickButton(event){
     let target = event.target;
     if (target.classList.contains("number")) clickNumber(target);
     if (target.classList.contains("operator")) clickOperator(target);
@@ -23,7 +23,7 @@ function clickButton(event){
 //specific button functions
 function clickNumber(target){
     if (!isReplaceable){
-        if (opCurrentArray.length <= MAXLENGTH){
+        if (opCurrentArray.length < MAXLENGTH){
             opCurrentArray.push(target.textContent);
         }
     }
@@ -31,6 +31,7 @@ function clickNumber(target){
         opCurrentArray = [target.textContent];
         isReplaceable = false;
     }
+    console.log(opCurrentArray);
 }
 
 function clickOperator(target){
