@@ -1,6 +1,14 @@
 //imports
 import * as CalcModule from './calculation-module';
 
+//variables
+let operandOne = undefined;
+let operandTwo = undefined;
+let opCurrentArray = [];
+let opHistoryString = '';
+let isReplaceable = false;
+let isNegative = false;
+
 //click button function
 function clickButton(event){
     let target = event.target;
@@ -29,5 +37,5 @@ function clickDecimal(target){
 }
 
 function clickSign(target){
-    
+
 }
