@@ -7,7 +7,7 @@ const MAXLENGTH = 20;
 let calculatedFloat = undefined;
 let operator = undefined;
 let opCurrentArray = [];
-let isReplaceable = false;
+let isReplaceable = true;
 let isNegative = false;
 let hasDecimal = false;
 
@@ -85,11 +85,16 @@ function clickSign(){
 
 function clickBackspace(){
     if (!isReplaceable){
+        console.log(operator);
         if (opCurrentArray.length > 1){
             opCurrentArray.pop();
         }
         else if (opCurrentArray.length == 1){
             resetOpCurrentArray();
+        }
+        else if (operator !== undefined){
+            operator = undefined;
+            console.log("operator now undefined");
         }
     }
 }
