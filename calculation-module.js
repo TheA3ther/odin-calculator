@@ -1,5 +1,4 @@
 //main operate function
-
 export function operate(a, b, operator){
     switch (operator){
         case '+':
@@ -14,7 +13,6 @@ export function operate(a, b, operator){
 }
 
 //operation functions
-
 function add(a, b){
     return a + b;
 }
