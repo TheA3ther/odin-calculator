@@ -60,7 +60,9 @@ function clickOperator(target){
 }
 
 function clickEquals(target){
-    
+    PerformCalculation();
+    isReplaceable = true;
+    operator = undefined;
 }
 
 function clickDecimal(target){
